@@ -2022,3 +2022,257 @@ Processing by UsersController#index as HTML
 Completed 200 OK in 30ms (Views: 28.5ms | ActiveRecord: 0.3ms | Allocations: 7804)
 
 
+Started GET "/" for ::1 at 2019-10-27 17:08:07 -0700
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:17
+  Rendered users/index.html.erb within layouts/application (Duration: 24.3ms | Allocations: 6520)
+Completed 200 OK in 1059ms (Views: 1040.9ms | ActiveRecord: 3.6ms | Allocations: 1364090)
+
+
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Create (12.7ms)[0m  [1m[32mINSERT INTO "users" ("name", "bio", "lat", "lng", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Sai"], ["bio", "I like cheese."], ["lat", "34.067142"], ["lng", "-118.451345"], ["created_at", "2019-10-28 00:08:24.285588"], ["updated_at", "2019-10-28 00:08:24.285588"]]
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "bio", "lat", "lng", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Kevin"], ["bio", "I like dogs."], ["lat", "35.067142"], ["lng", "-110.451345"], ["created_at", "2019-10-28 00:08:24.304196"], ["updated_at", "2019-10-28 00:08:24.304196"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "bio", "lat", "lng", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Lucas"], ["bio", "I like money."], ["lat", "38.067142"], ["lng", "-120.451345"], ["created_at", "2019-10-28 00:08:24.307793"], ["updated_at", "2019-10-28 00:08:24.307793"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "bio", "lat", "lng", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Elena"], ["bio", "I like basketball."], ["lat", "40.067142"], ["lng", "-102.451345"], ["created_at", "2019-10-28 00:08:24.311021"], ["updated_at", "2019-10-28 00:08:24.311021"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "bio", "lat", "lng", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Sriram"], ["bio", "I like money."], ["lat", "45.067142"], ["lng", "-18.451345"], ["created_at", "2019-10-28 00:08:24.314617"], ["updated_at", "2019-10-28 00:08:24.314617"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+Started GET "/" for ::1 at 2019-10-27 17:08:26 -0700
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:17
+  Rendered users/index.html.erb within layouts/application (Duration: 5.4ms | Allocations: 2035)
+Completed 200 OK in 35ms (Views: 33.5ms | ActiveRecord: 0.7ms | Allocations: 8481)
+
+
+Started GET "/" for ::1 at 2019-10-27 17:08:28 -0700
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:17
+  Rendered users/index.html.erb within layouts/application (Duration: 3.1ms | Allocations: 2026)
+Completed 200 OK in 12ms (Views: 10.6ms | ActiveRecord: 0.5ms | Allocations: 8471)
+
+
+Started GET "/" for ::1 at 2019-10-27 17:08:28 -0700
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:17
+  Rendered users/index.html.erb within layouts/application (Duration: 5.3ms | Allocations: 2018)
+Completed 200 OK in 14ms (Views: 13.0ms | ActiveRecord: 0.5ms | Allocations: 8451)
+
+
+Started GET "/" for ::1 at 2019-10-27 17:08:29 -0700
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:17
+  Rendered users/index.html.erb within layouts/application (Duration: 3.3ms | Allocations: 2018)
+Completed 200 OK in 12ms (Views: 11.2ms | ActiveRecord: 0.4ms | Allocations: 8457)
+
+
+Started GET "/" for ::1 at 2019-10-27 17:08:29 -0700
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:17
+  Rendered users/index.html.erb within layouts/application (Duration: 4.4ms | Allocations: 2018)
+Completed 200 OK in 12ms (Views: 11.2ms | ActiveRecord: 0.3ms | Allocations: 8451)
+
+
+Started GET "/" for ::1 at 2019-10-27 17:08:29 -0700
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:17
+  Rendered users/index.html.erb within layouts/application (Duration: 3.5ms | Allocations: 2018)
+Completed 200 OK in 12ms (Views: 10.4ms | ActiveRecord: 0.3ms | Allocations: 8457)
+
+
+Started GET "/" for ::1 at 2019-10-27 17:08:29 -0700
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:17
+  Rendered users/index.html.erb within layouts/application (Duration: 3.7ms | Allocations: 2018)
+Completed 200 OK in 12ms (Views: 10.5ms | ActiveRecord: 0.5ms | Allocations: 8460)
+
+
+Started GET "/" for ::1 at 2019-10-27 17:08:29 -0700
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:17
+  Rendered users/index.html.erb within layouts/application (Duration: 4.8ms | Allocations: 2018)
+Completed 200 OK in 13ms (Views: 10.9ms | ActiveRecord: 0.5ms | Allocations: 8447)
+
+
+Started GET "/" for ::1 at 2019-10-27 17:08:30 -0700
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:17
+  Rendered users/index.html.erb within layouts/application (Duration: 3.9ms | Allocations: 2018)
+Completed 200 OK in 14ms (Views: 13.1ms | ActiveRecord: 0.4ms | Allocations: 8454)
+
+
+Started DELETE "/users/1" for ::1 at 2019-10-27 17:08:33 -0700
+Processing by UsersController#destroy as HTML
+  Parameters: {"authenticity_token"=>"dcg5L+Qrce7XWj9ukEvK4/vVWxmU5+Qtgp7sXW9N+++6LK8P+iQ3DMNlVADubuNx2Wim2dhoqvO2ZrmJPMv1Ew==", "id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:69:in `set_user'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:59:in `destroy'
+  [1m[36mUser Destroy (7.8ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 1]]
+  ↳ app/controllers/users_controller.rb:59:in `destroy'
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:59:in `destroy'
+Redirected to http://localhost:3000/users
+Completed 302 Found in 22ms (ActiveRecord: 9.9ms | Allocations: 3139)
+
+
+Started GET "/users" for ::1 at 2019-10-27 17:08:33 -0700
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:17
+  Rendered users/index.html.erb within layouts/application (Duration: 3.1ms | Allocations: 1884)
+Completed 200 OK in 15ms (Views: 14.1ms | ActiveRecord: 0.5ms | Allocations: 8341)
+
+
+Started DELETE "/users/3" for ::1 at 2019-10-27 17:08:35 -0700
+Processing by UsersController#destroy as HTML
+  Parameters: {"authenticity_token"=>"i/J2yR0uqLbBgzXaINCRBcCjTbCx9rdKfWLyO96diD5EFuDpAyHuVNW8XrRe9biX4h6wcP15+ZRJmqfvjRuGwg==", "id"=>"3"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:69:in `set_user'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:59:in `destroy'
+  [1m[36mUser Destroy (0.3ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 3]]
+  ↳ app/controllers/users_controller.rb:59:in `destroy'
+  [1m[35m (2.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:59:in `destroy'
+Redirected to http://localhost:3000/users
+Completed 302 Found in 12ms (ActiveRecord: 3.1ms | Allocations: 2618)
+
+
+Started GET "/users" for ::1 at 2019-10-27 17:08:35 -0700
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:17
+  Rendered users/index.html.erb within layouts/application (Duration: 7.7ms | Allocations: 1746)
+Completed 200 OK in 18ms (Views: 17.0ms | ActiveRecord: 0.3ms | Allocations: 8191)
+
+
+Started DELETE "/users/4" for ::1 at 2019-10-27 17:08:37 -0700
+Processing by UsersController#destroy as HTML
+  Parameters: {"authenticity_token"=>"f6cLiqOqn1csLiSpD5rFQvguK74oPAQn+T6R6YaYOKKwQ52qvaXZtTgRT8dxv+zQ2pPWfmSzSvnNxsQ91R42Xg==", "id"=>"4"}
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:69:in `set_user'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:59:in `destroy'
+  [1m[36mUser Destroy (0.8ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 4]]
+  ↳ app/controllers/users_controller.rb:59:in `destroy'
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:59:in `destroy'
+Redirected to http://localhost:3000/users
+Completed 302 Found in 11ms (ActiveRecord: 3.1ms | Allocations: 2613)
+
+
+Started GET "/users" for ::1 at 2019-10-27 17:08:37 -0700
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:17
+  Rendered users/index.html.erb within layouts/application (Duration: 3.8ms | Allocations: 1609)
+Completed 200 OK in 14ms (Views: 12.9ms | ActiveRecord: 0.3ms | Allocations: 8058)
+
+
+Started DELETE "/users/5" for ::1 at 2019-10-27 17:08:38 -0700
+Processing by UsersController#destroy as HTML
+  Parameters: {"authenticity_token"=>"qcai/AGhMG/asMLWF9Ns2AOkETvXT32vVc/ja4IKNmBmIjTcH652jc6Pqbhp9kVKIRns+5vAM3FhN7a/0Yw4nA==", "id"=>"5"}
+  [1m[36mUser Load (2.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:69:in `set_user'
+  [1m[35m (0.7ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:59:in `destroy'
+  [1m[36mUser Destroy (0.3ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 5]]
+  ↳ app/controllers/users_controller.rb:59:in `destroy'
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:59:in `destroy'
+Redirected to http://localhost:3000/users
+Completed 302 Found in 10ms (ActiveRecord: 3.8ms | Allocations: 2613)
+
+
+Started GET "/users" for ::1 at 2019-10-27 17:08:38 -0700
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:17
+  Rendered users/index.html.erb within layouts/application (Duration: 3.3ms | Allocations: 1472)
+Completed 200 OK in 13ms (Views: 12.4ms | ActiveRecord: 0.3ms | Allocations: 7915)
+
+
+Started DELETE "/users/2" for ::1 at 2019-10-27 17:08:40 -0700
+Processing by UsersController#destroy as HTML
+  Parameters: {"authenticity_token"=>"SvsxKY8shdAzGeMuRXnJHNpAc6CkByKFehomkUUREC+FH6cJkSPDMicmiEA7XOCO+P2OYOiIbFtO4nNFFpce0w==", "id"=>"2"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:69:in `set_user'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:59:in `destroy'
+  [1m[36mUser Destroy (0.4ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 2]]
+  ↳ app/controllers/users_controller.rb:59:in `destroy'
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:59:in `destroy'
+Redirected to http://localhost:3000/users
+Completed 302 Found in 9ms (ActiveRecord: 1.7ms | Allocations: 2616)
+
+
+Started GET "/users" for ::1 at 2019-10-27 17:08:40 -0700
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:17
+  Rendered users/index.html.erb within layouts/application (Duration: 3.9ms | Allocations: 1335)
+Completed 200 OK in 15ms (Views: 13.0ms | ActiveRecord: 0.3ms | Allocations: 7789)
+
+
+Started GET "/users" for ::1 at 2019-10-27 17:08:55 -0700
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:17
+  Rendered users/index.html.erb within layouts/application (Duration: 5.0ms | Allocations: 1341)
+Completed 200 OK in 20ms (Views: 17.2ms | ActiveRecord: 0.7ms | Allocations: 7787)
+
+
+Started GET "/users/6" for ::1 at 2019-10-27 17:15:10 -0700
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:69:in `set_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:13:in `show'
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mUser Load (2.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE (users.lat IS NOT NULL AND users.lng IS NOT NULL) AND (users.lat>23.94725230024863 AND users.lat<44.18703169975135 AND users.lng>-130.6105586920324 AND users.lng<-106.29213130796762) AND ((
+          (ACOS(least(1,COS(0.594583794644446)*COS(-2.067365973665723)*COS(RADIANS(users.lat))*COS(RADIANS(users.lng))+
+          COS(0.594583794644446)*SIN(-2.067365973665723)*COS(RADIANS(users.lat))*SIN(RADIANS(users.lng))+
+          SIN(0.594583794644446)*SIN(RADIANS(users.lat))))*3963.1899999999996)
+          <= 700)) AND "users"."id" != $1[0m  [["id", 6]]
+  ↳ app/views/users/show.html.erb:40
+  Rendered users/show.html.erb within layouts/application (Duration: 7.2ms | Allocations: 1167)
+Completed 200 OK in 90ms (Views: 56.3ms | ActiveRecord: 3.6ms | Allocations: 11080)
+
+
