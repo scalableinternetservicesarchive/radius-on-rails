@@ -10,9 +10,8 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
-    # id = User.find(params[:id])
-    # @somewhere = Geokit::LatLng.new(34.067142,-118.451345)
-    @nearby_users = User.where.not(id: params[:id])
+    user = User.find(params[:id])
+    @nearby_users = User.within(700, :origin => [user.lat,user.lng]).where.not(id: user.id)
   end
 
   # GET /users/new
@@ -72,6 +71,6 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:name, :bio)
+      params.require(:user).permit(:name, :bio, :lat, :lng)
     end
 end

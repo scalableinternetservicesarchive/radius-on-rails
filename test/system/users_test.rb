@@ -15,6 +15,8 @@ class UsersTest < ApplicationSystemTestCase
     click_on "New User"
 
     fill_in "Bio", with: @user.bio
+    fill_in "Lat", with: @user.lat
+    fill_in "Lng", with: @user.lng
     fill_in "Name", with: @user.name
     click_on "Create User"
 
@@ -27,6 +29,8 @@ class UsersTest < ApplicationSystemTestCase
     click_on "Edit", match: :first
 
     fill_in "Bio", with: @user.bio
+    fill_in "Lat", with: @user.lat
+    fill_in "Lng", with: @user.lng
     fill_in "Name", with: @user.name
     click_on "Update User"
 
