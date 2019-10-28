@@ -3,5 +3,5 @@ class User < ApplicationRecord
                    :default_formula => :sphere,
                    :distance_field_name => :distance,
                    :lat_column_name => :lat,
-                   :lng_column_name => :lon
+                   :lng_column_name => :lng
 end
