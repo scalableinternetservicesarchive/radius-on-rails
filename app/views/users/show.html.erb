@@ -1,52 +1,21 @@
-<p id="notice"><%= notice %></p>
-
 <p>
   <strong>Name:</strong>
-  <%= @user.name %>
+  <%= current_user.name %>
 </p>
 
 <p>
   <strong>Bio:</strong>
-  <%= @user.bio %>
+  <%= current_user.bio %>
 </p>
 
 <p>
   <strong>Lat:</strong>
-  <%= @user.lat %>
+  <%= current_user.lat %>
 </p>
 
 <p>
   <strong>Lng:</strong>
-  <%= @user.lng %>
+  <%= current_user.lng %>
 </p>
 
-<br>
-<h3>
-  <strong>Nearby:</strong>
-</h3>
-
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Bio</th>
-      <th>Lat</th>
-      <th>Lng</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @nearby_users.each do |user| %>
-      <tr>
-        <td><%= user.name %></td>
-        <td><%= user.bio %></td>
-        <td><%= user.lat %></td>
-        <td><%= user.lng %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+<%= link_to 'Back', :back %>

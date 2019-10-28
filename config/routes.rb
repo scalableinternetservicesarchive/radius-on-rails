@@ -1,6 +1,12 @@
 Rails.application.routes.draw do
-  resources :users
-  root 'users#index'
+  devise_for :users
+  # Fix this routing
+  devise_scope :user do
+    get 'sign_in', to: 'users/sessions#new'
+    get 'edit', to: 'users/registrations#edit'
+  end
+  # resources :users, :only => [:show]
 
-  get 'signup' => 'sign_up#index'
+  root 'users#index'
+  get 'profile' => 'users#show'
 end
