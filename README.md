@@ -1,24 +1,14 @@
-# README
+# Team
+|Name|Github|
+|---|---|
+|Elena Escalas|<a href="https://github.com/rVrengaraju">EEscalas</a>|
+|Kevin Tan|<a href="https://github.com/rVrengaraju">ktan17</a>|
+|Lucas Xia|<a href="https://github.com/rVrengaraju">lucasxia01</a>|
+|Sai Atmakuri|<a href="https://github.com/rVrengaraju">saiguy3</a>|
+|Sriram Balachanran|<a href="https://github.com/rVrengaraju">sriramb2000</a>|
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Section
+We will be attending **Section 1A (12 - 2pm)**.
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## Project Description
+Radius is a location-based social media app, focused on facilitating real human connection with the people that you pass by on a day-to-day basis. Discover and interact with users in your radius and expand your social network.
