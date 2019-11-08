@@ -1,5 +1,24 @@
-<h1>Hi <%= current_user.name %>! These people are nearby:</h1>
+<!-- Geolocation -->
+<script>
+  function cb(position) {
+    document.getElementById('lat').value = position.coords.latitude;
+    document.getElementById('lon').value = position.coords.longitude;
+  }
+  if ('geolocation' in navigator) {
+    navigator.geolocation.getCurrentPosition(cb);
+  } else {
+    // TODO
+  }
+</script>
 
+<%= form_tag '/', :method=>'post' do %>
+  <%= hidden_field_tag 'lat', value = ''%>
+  <%= hidden_field_tag 'lon', value = ''%>
+<% end %>
+<!-- Geolocation -->
+
+<h1>Hi <%= current_user.name %>! These people are nearby:</h1>
+<button>Refresh</button>
 <table>
   <thead>
     <tr>
