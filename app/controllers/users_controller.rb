@@ -17,54 +17,22 @@ class UsersController < ApplicationController
     # @nearby_users = User.within(700, :origin => [user.lat,user.lng]).where.not(id: user.id)
   end
 
-  # # GET /users/new
-  # def new
-  #   @user = User.new
-  # end
+  # PATCH/PUT /users/1/update_location
+  # PATCH/PUT /users/1.json/update_location
+  def update_location
+    lat, lng = cookies[:lat_lng].split("|")
 
-  # # GET /users/1/edit
-  # def edit
-  # end
-
-  # # POST /users
-  # # POST /users.json
-  # def create
-  #   @user = User.new(user_params)
-
-  #   respond_to do |format|
-  #     if @user.save
-  #       format.html { redirect_to @user, notice: 'User was successfully created.' }
-  #       format.json { render :show, status: :created, location: @user }
-  #     else
-  #       format.html { render :new }
-  #       format.json { render json: @user.errors, status: :unprocessable_entity }
-  #     end
-  #   end
-  # end
-
-  # # PATCH/PUT /users/1
-  # # PATCH/PUT /users/1.json
-  # def update
-  #   respond_to do |format|
-  #     if @user.update(user_params)
-  #       format.html { redirect_to @user, notice: 'User was successfully updated.' }
-  #       format.json { render :show, status: :ok, location: @user }
-  #     else
-  #       format.html { render :edit }
-  #       format.json { render json: @user.errors, status: :unprocessable_entity }
-  #     end
-  #   end
-  # end
-
-  # # DELETE /users/1
-  # # DELETE /users/1.json
-  # def destroy
-  #   @user.destroy
-  #   respond_to do |format|
-  #     format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
-  #     format.json { head :no_content }
-  #   end
-  # end
+    respond_to do |format|
+      if params[:id].to_i == current_user.id && helpers.is_valid_coord?(lat) && helpers.is_valid_coord?(lng)
+        current_user.update(:lat => lat.to_f, :lng => lng.to_f)
+        format.html { redirect_to root_path, notice: 'Location was successfully updated.' }
+        format.json { render :show, status: :ok, location: root_path }
+      else
+        format.html { redirect_to root_path, notice: 'Location could not be updated.' }
+        format.json { render json: current_user.errors, status: :unprocessable_entity }
+      end
+    end
+  end
 
   # private
   #   # Use callbacks to share common setup or constraints between actions.
@@ -74,6 +42,6 @@ class UsersController < ApplicationController
 
   #   # Never trust parameters from the scary internet, only allow the white list through.
   #   def user_params
-  #     params.require(:user).permit(:name, :bio, :lat, :lng)
+  #     params.require(:user).permit(:name, :bio)
   #   end
 end

@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   # Show user profiles
   resources :users, :only => [:show]
   get 'profile' => 'users#show'
+  put 'users/:id/update_location' => 'users#update_location', as: 'update_location'
 
   # Root path configuration
   authenticated :user do

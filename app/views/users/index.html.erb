@@ -1,24 +1,23 @@
 <!-- Geolocation -->
-<script>
-  function cb(position) {
-    document.getElementById('lat').value = position.coords.latitude;
-    document.getElementById('lon').value = position.coords.longitude;
-  }
+<%= javascript_tag do %>
   if ('geolocation' in navigator) {
-    navigator.geolocation.getCurrentPosition(cb);
+    navigator.geolocation.getCurrentPosition(function(position) {
+      var cookie_val = position.coords.latitude + "|" + position.coords.longitude;
+      console.log(cookie_val);
+      document.cookie = "lat_lng=" + escape(cookie_val);
+      console.log(document.cookie)
+    });
   } else {
-    // TODO
+    alert("Sorry, your browser does not support HTML5 geolocation.");
   }
-</script>
-
-<%= form_tag '/', :method=>'post' do %>
-  <%= hidden_field_tag 'lat', value = ''%>
-  <%= hidden_field_tag 'lon', value = ''%>
 <% end %>
+
 <!-- Geolocation -->
 
 <h1>Hi <%= current_user.name %>! These people are nearby:</h1>
-<button>Refresh</button>
+
+<%= button_to 'Refresh', update_location_path(current_user), method: :put %>
+
 <table>
   <thead>
     <tr>
