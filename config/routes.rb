@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :posts
   devise_for :users, path: '', path_names: { 
     sign_in: 'login',
     sign_out: 'logout'
@@ -13,9 +12,17 @@ Rails.application.routes.draw do
   resources :users, :only => [:show]
   get 'profile' => 'users#show'
   put 'users/:id/update_location' => 'users#update_location', as: 'update_location'
-  
+
+  # Follows
+  resources :users do
+    member do
+      get :following, :followers
+    end
+  end
+  resources :relationships, only: [:create, :destroy]
+
   # Create posts and show feed
-  resources :microposts, :only => [:new]
+  resources :posts, :only => [:new, :create, :destroy]
   get 'feed' => 'users#feed', as: 'feed'
 
   # Root path configuration

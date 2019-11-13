@@ -1,3 +1,5 @@
+<%= render 'follow_form' %>
+
 <p>
   <strong>Name:</strong>
   <%= @user.name %>
@@ -17,6 +19,10 @@
   <strong>Lng:</strong>
   <%= @user.lng %>
 </p>
+
+<%= render 'shared/stats' %>
+
+<br>
 
 <% if is_current_user?(@user) %>
   <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
