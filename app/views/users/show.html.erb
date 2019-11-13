@@ -20,11 +20,11 @@
   <%= @user.lng %>
 </p>
 
-<%= render 'shared/stats' %>
-
-<br>
-
 <% if is_current_user?(@user) %>
+  <%= render 'shared/stats' %>
+  <br>
   <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
+  <%= link_to 'Back', root_url %>
+<% else %>
+  <%= link_to 'Back', :back %>
 <% end %>
-<%= link_to 'Back', :back %>
