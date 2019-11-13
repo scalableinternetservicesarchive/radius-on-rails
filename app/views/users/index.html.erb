@@ -4,8 +4,7 @@
     navigator.geolocation.getCurrentPosition(function(position) {
       var cookie_val = position.coords.latitude + "|" + position.coords.longitude;
       console.log(cookie_val);
-      document.cookie = "lat_lng=" + escape(cookie_val);
-      console.log(document.cookie)
+      document.cookie = "lat_lng=" + escape(cookie_val) + ";path=/users/" + <%= current_user.id %>;
     });
   } else {
     alert("Sorry, your browser does not support HTML5 geolocation.");
