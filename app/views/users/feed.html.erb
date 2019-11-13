@@ -1,13 +1,13 @@
 <h2>Create a Post:</h2>
 <%= render 'posts/form', post: @post %>
 
-<h2>My Posts:</h2>
+<h2>My Feed:</h2>
 <ol class="posts">
   <% @posts.each do |post| %>
     <li id="post-<%= post.id %>">
     <span class="content"><%= post.content %></span>
     <span class="timestamp">
-      (Posted <%= time_ago_in_words(post.created_at) %> ago.)
+      (Posted by <%= post.user.name %> <%= time_ago_in_words(post.created_at) %> ago.)
     </span>
     <%= link_to 'Delete', post, method: :delete, data: { confirm: 'Are you sure?' } %>
     </li>

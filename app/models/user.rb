@@ -18,6 +18,11 @@ class User < ApplicationRecord
     has_many :following, through: :active_relationships,  source: :followed
     has_many :followers, through: :passive_relationships, source: :follower
 
+    # Get user feed
+    def feed
+        Post.where("user_id IN (?) OR user_id = ?", following_ids, id)
+    end
+
     # Follows a user.
     def follow(other_user)
         following << other_user

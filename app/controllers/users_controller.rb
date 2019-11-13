@@ -37,7 +37,7 @@ class UsersController < ApplicationController
   # GET /feed
   def feed
     # redirect_to feed_path(current_user.id) unless Float(params[:id]) == current_user.id
-    @posts = current_user.posts
+    @posts = current_user.feed
     @post = Post.new
   end
 
