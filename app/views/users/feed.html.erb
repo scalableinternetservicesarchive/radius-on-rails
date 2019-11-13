@@ -9,7 +9,7 @@
     <span class="timestamp">
       (Posted by <%= post.user.name %> <%= time_ago_in_words(post.created_at) %> ago.)
     </span>
-    <%= link_to 'Delete', post, method: :delete, data: { confirm: 'Are you sure?' } %>
+    <%= link_to 'Delete', post, method: :delete, data: { confirm: 'Are you sure?' } if is_current_user?(post.user) %>
     </li>
   <% end %>
 </ol>
