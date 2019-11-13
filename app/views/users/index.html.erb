@@ -15,7 +15,6 @@
 <!-- Geolocation -->
 
 <h1>Hi <%= current_user.name %>! These people are nearby:</h1>
-
 <%= button_to 'Refresh', update_location_path(current_user), method: :put %>
 
 <table>
@@ -41,5 +40,3 @@
     <% end %>
   </tbody>
 </table>
-
-<br>

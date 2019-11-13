@@ -34,6 +34,13 @@ class UsersController < ApplicationController
     end
   end
 
+  # GET /feed
+  def feed
+    # redirect_to feed_path(current_user.id) unless Float(params[:id]) == current_user.id
+    @posts = current_user.posts
+    @post = Post.new
+  end
+
   # private
   #   # Use callbacks to share common setup or constraints between actions.
   #   def set_user
