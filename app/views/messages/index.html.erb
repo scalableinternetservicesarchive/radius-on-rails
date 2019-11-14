@@ -1,5 +1,5 @@
-<h2>Chat with <%= @conversation.recipient.name %></h2>
-<%= link_to "View #{@conversation.recipient.name}'s' Profile", @conversation.recipient %>
+<h2>Chat with <%= @recipient.name %></h2>
+<%= link_to "View #{@recipient.name}'s' Profile", @recipient %>
 <br><br>
 <% if @over_ten %>
    <%= link_to 'Load More Messages', '?m=all' %>
@@ -16,8 +16,13 @@
         </div>
       <% end %>
     <% end %>
+    <% unless @messages.last.read %>
+      <% if @messages.last.user_id == current_user.id %>
+        <i>(Unread)</i>
+      <% end %>
+    <% end %>
   <% else %>
-    <p>Send your first message to <%= @conversation.recipient.name %></p>
+    <p>Send your first message to <%= @recipient.name %></p>
   <% end %>
 </div>
 
