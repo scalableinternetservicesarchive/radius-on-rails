@@ -1,5 +1,5 @@
 class MessagesController < ApplicationController
-  before_action :set_conversation
+  before_action :authenticate_user!, :set_conversation
 
   def index
     @messages = @conversation.messages
@@ -16,6 +16,7 @@ class MessagesController < ApplicationController
         @messages.last.read = true
       end
     end
+    @is_blank = @messages.blank?
     @message = @conversation.messages.new
   end
 

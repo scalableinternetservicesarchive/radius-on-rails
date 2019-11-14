@@ -26,7 +26,7 @@ Rails.application.routes.draw do
   get 'feed' => 'users#feed', as: 'feed'
 
   # Messaging
-  resources :conversations do
+  resources :conversations, path: 'chats' do
     resources :messages
   end
 
