@@ -8,32 +8,11 @@
     <%= render 'shared/stats' %>
   </aside>
   <div class="col-md-8">
-    <h3><%= @title %></h3>
     <% if @users.any? %>
-        <table>
-            <thead>
-                <tr>
-                <th>Name</th>
-                <th>Bio</th>
-                <th>Lat</th>
-                <th>Lng</th>
-                <th colspan="3"></th>
-                </tr>
-            </thead>
-
-            <tbody>
-                <% @users.each do |user| %>
-                <tr>
-                    <td><%= user.name %></td>
-                    <td><%= user.bio %></td>
-                    <td><%= user.lat %></td>
-                    <td><%= user.lng %></td>
-                    <td><%= link_to 'Show', user %></td>
-                </tr>
-                <% end %>
-            </tbody>
-        </table>
-        <%# <%= will_paginate  %>
+      <h3><%= @title %></h3>
+      <%= render 'users/shared/table', users: @users %>
+    <% else %>
+      <p>No <%= @title %>.</p>
     <% end %>
   </div>
 </div>

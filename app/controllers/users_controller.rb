@@ -36,23 +36,32 @@ class UsersController < ApplicationController
 
   # GET /feed
   def feed
-    # redirect_to feed_path(current_user.id) unless Float(params[:id]) == current_user.id
     @posts = current_user.feed
     @post = Post.new
   end
 
   def following
-    @title = "Following"
-    @user  = User.find(params[:id])
-    @users = @user.following
-    render 'show_follow'
+    # For now, restrict user to only be able to see their own following
+    if Float(params[:id]) == current_user.id
+      @title = "Following"
+      @user  = current_user
+      @users = @user.following
+      render 'show_follow'
+    else
+      redirect_to following_user_path(current_user.id)
+    end
   end
 
   def followers
-    @title = "Followers"
-    @user  = User.find(params[:id])
-    @users = @user.followers
-    render 'show_follow'
+    # For now, restrict user to only be able to see their own followers
+    if Float(params[:id]) == current_user.id
+      @title = "Followers"
+      @user  = current_user
+      @users = @user.followers
+      render 'show_follow'
+    else
+      redirect_to followers_user_path(current_user.id)
+    end
   end
 
   # private
