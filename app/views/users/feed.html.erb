@@ -5,9 +5,9 @@
 <ol class="posts">
   <% @posts.each do |post| %>
     <li id="post-<%= post.id %>">
-    <span class="content"><%= post.content %></span>
+    <span class="content"><%= simple_format(post.content) %></span>
     <span class="timestamp">
-      (Posted by <%= post.user.name %> <%= time_ago_in_words(post.created_at) %> ago.)
+      (Posted by <%= link_to post.user.name, post.user %> <%= time_ago_in_words(post.created_at) %> ago.)
     </span>
     <%= link_to 'Delete', post, method: :delete, data: { confirm: 'Are you sure?' } if is_current_user?(post.user) %>
     </li>

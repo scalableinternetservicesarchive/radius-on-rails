@@ -11,15 +11,14 @@
             <% recipient = User.find(conversation.sender_id) %>
           <% end %>
           <%= link_to recipient.name, conversation_messages_path(conversation)%>
-          <% unless conversation.messages.last.read %>
+          <% if conversation.messages.last && !conversation.messages.last.read %>
             <% unless conversation.messages.last.user_id == current_user.id %>
               <i>(Unread messages)</i>
             <% end %>
           <% end %>
+          <br>
         <% end %>
-        <br>
       <% end %>
     </div>
   </div>
 </div>
-

@@ -1,5 +1,5 @@
 <h2>Chat with <%= @recipient.name %></h2>
-<%= link_to "View #{@recipient.name}'s' Profile", @recipient %>
+<%= link_to "View #{@recipient.name}'s Profile", @recipient %>
 <br><br>
 <% if @over_ten %>
    <%= link_to 'Load More Messages', '?m=all' %>
@@ -12,7 +12,7 @@
         <% user = User.find(message.user_id) %>
         <div>
           <div><strong><%= user.name %></strong> <%= message.message_time %></div>
-          <%= message.body %>
+          <%= simple_format(message.body) %>
         </div>
       <% end %>
     <% end %>
@@ -37,3 +37,4 @@
     <%= f.submit "Send", class: "ui blue labeled submit icon button" %>
   </div>
 <% end %>
+<%= link_to 'Back', conversations_path %>
