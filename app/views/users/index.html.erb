@@ -14,7 +14,7 @@
 <!-- Geolocation -->
 
 <%= button_to 'Refresh', update_location_path(current_user), method: :put %>
-<h1>Hi <%= current_user.name %>!</h1>
+<h1>Hi <span id='name'><%= current_user.name %></span>!</h1>
 
 <% if @users.any? %>
   <h1>These people are nearby:</h1>

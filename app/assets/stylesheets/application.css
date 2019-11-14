@@ -13,3 +13,33 @@
  *= require_tree .
  *= require_self
  */
+
+* {
+    font-family: 'Ubuntu', sans-serif;
+}
+
+h1 {
+    font-family: 'Comfortaa', cursive;
+    font-size: 2em;
+}
+
+a {
+    color: #91C4FF;
+}
+
+a:visited {
+    color: #6A96DF;
+}
+
+table {
+    font-size: 1.2em;
+}
+
+td {
+    font-size: 1em;
+}
+
+span#name {
+    font-family: 'Comfortaa', cursive;
+    color: #EF9A9A;
+}
