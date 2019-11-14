@@ -25,6 +25,11 @@ Rails.application.routes.draw do
   resources :posts, :only => [:new, :create, :destroy]
   get 'feed' => 'users#feed', as: 'feed'
 
+  # Messaging
+  resources :conversations do
+    resources :messages
+  end
+
   # Root path configuration
   authenticated :user do
     root 'users#index', as: :authenticated_root
