@@ -1,0 +1,57 @@
+
+=INFO REPORT==== 14-Nov-2019::05:21:27 ===
+    ts_config_server:(5:<0.102.0>) Config server started, logdir is "/home/ec2-user/.tsung/log/20191114-0521"
+ 
+=INFO REPORT==== 14-Nov-2019::05:21:27 ===
+              ts_mon:(5:<0.83.0>) starting monitor, global 
+
+=INFO REPORT==== 14-Nov-2019::05:21:27 ===
+           ts_config:(5:<0.102.0>) Reading config file: simple.xml
+
+=ERROR REPORT==== 14-Nov-2019::05:21:27 ===
+3314- fatal: {error,{validity_constraint_Name_Token,47}}
+
+=INFO REPORT==== 14-Nov-2019::05:21:27 ===
+    ts_config_server:(0:<0.102.0>) Error while parsing XML config file: {fatal,
+                                                                         {{error,
+                                                                           {validity_constraint_Name_Token,
+                                                                            47}},
+                                                                          {file,
+                                                                           "simple.xml"},
+                                                                          {line,
+                                                                           12},
+                                                                          {col,
+                                                                           77}}}
+
+=ERROR REPORT==== 14-Nov-2019::05:21:27 ===
+** Generic server ts_config_server terminating 
+** Last message in was {get_monitor_hosts}
+** When Server state == {state,undefined,
+                               "/home/ec2-user/.tsung/log/20191114-0521",0,0,
+                               0,undefined,1,undefined,'ip-172-31-28-213',0,0,
+                               undefined,undefined}
+** Reason for termination == 
+** {{badrecord,config},
+    [{ts_config_server,handle_call,3,
+                       [{file,"src/tsung_controller/ts_config_server.erl"},
+                        {line,338}]},
+     {gen_server,try_handle_call,4,[{file,"gen_server.erl"},{line,636}]},
+     {gen_server,handle_msg,6,[{file,"gen_server.erl"},{line,665}]},
+     {proc_lib,init_p_do_apply,3,[{file,"proc_lib.erl"},{line,247}]}]}
+** Client <0.81.0> stacktrace
+** [{gen,do_call,4,[{file,"gen.erl"},{line,169}]},
+    {gen,do_for_proc,2,[{file,"gen.erl"},{line,271}]},
+    {gen_server,call,2,[{file,"gen_server.erl"},{line,202}]},
+    {ts_os_mon,activate,0,
+               [{file,"src/tsung_controller/ts_os_mon.erl"},{line,58}]},
+    {application_starter,run_the_phase,4,
+                         [{file,"application_starter.erl"},{line,99}]},
+    {application_starter,start_apps,3,
+                         [{file,"application_starter.erl"},{line,59}]},
+    {application_starter,start,3,[{file,"application_starter.erl"},{line,45}]},
+    {application_master,start_the_app,5,
+                        [{file,"application_master.erl"},{line,312}]}]
+
+=INFO REPORT==== 14-Nov-2019::05:21:27 ===
+    ts_config_server:(5:<0.121.0>) Config server started, logdir is "/home/ec2-user/.tsung/log/20191114-0521"
+ 
