@@ -20,15 +20,20 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1/update_location
   # PATCH/PUT /users/1.json/update_location
   def update_location
-    lat, lng = cookies[:lat_lng].split("|")
-
     respond_to do |format|
-      if params[:id].to_i == current_user.id && helpers.is_valid_coord?(lat) && helpers.is_valid_coord?(lng)
-        current_user.update(:lat => lat.to_f, :lng => lng.to_f)
-        format.html { redirect_to root_path, notice: 'Location was successfully updated.' }
-        format.json { render :show, status: :ok, location: root_path }
+      unless cookies[:lat_lng].nil?
+        lat, lng = cookies[:lat_lng].split("|")
+
+        if params[:id].to_i == current_user.id && helpers.is_valid_coord?(lat) && helpers.is_valid_coord?(lng)
+          current_user.update(:lat => lat.to_f, :lng => lng.to_f)
+          format.html { redirect_to root_path, notice: 'Location was successfully updated.' }
+          format.json { render :show, status: :ok, location: root_path }
+        else
+          format.html { redirect_to root_path, notice: 'Location could not be updated.' }
+          format.json { render json: current_user.errors, status: :unprocessable_entity }
+        end
       else
-        format.html { redirect_to root_path, notice: 'Location could not be updated.' }
+        format.html { redirect_to root_path, notice: 'Sorry, your browser does not support HTML5 geolocation.' }
         format.json { render json: current_user.errors, status: :unprocessable_entity }
       end
     end
