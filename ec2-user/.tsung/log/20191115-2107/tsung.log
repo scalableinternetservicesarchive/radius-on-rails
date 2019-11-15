@@ -1,0 +1,7 @@
+# stats: dump at 1573852082
+stats: users 1 1
+stats: {load,"tsung_controller@ip-172-31-16-249"} 1 0.078125 0 0.078125 0.078125 0 0
+stats: {cpu,"tsung_controller@ip-172-31-16-249"} 1 6.226751191910725 0 6.226751191910725 6.226751191910725 0 0
+stats: {freemem,"tsung_controller@ip-172-31-16-249"} 1 3523.19140625 0 3523.19140625 3523.19140625 0 0
+stats: users_count 1 1
+stats: finish_users_count 0 0
