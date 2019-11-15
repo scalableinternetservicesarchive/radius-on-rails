@@ -22,7 +22,9 @@ Rails.application.routes.draw do
   resources :relationships, only: [:create, :destroy]
 
   # Create posts and show feed
-  resources :posts, :only => [:new, :create, :destroy]
+  resources :posts, :only => [:new, :create, :destroy] do
+    resources :likes
+  end
   get 'feed' => 'users#feed', as: 'feed'
 
   # Messaging

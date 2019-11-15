@@ -9,6 +9,17 @@
     <span class="timestamp">
       (Posted by <%= link_to post.user.name, post.user %> <%= time_ago_in_words(post.created_at) %> ago.)
     </span>
+    <div>
+      <p>
+        <% pre_like = post.likes.find { |like| like.user_id == current_user.id} %>
+        <% if pre_like %>
+          <%= link_to image_tag('heart-liked.png'), post_like_path(post, pre_like), method: :delete, style: 'height:8px;width:8px;' %>
+        <% else %>
+          <%= link_to image_tag('heart-unliked.png'), post_likes_path(post), method: :post, style: 'height:8px;width:8px' %>
+        <% end %>
+        <%= post.likes.count %>
+      </p>
+    </div>
     <%= link_to 'Delete', post, method: :delete, data: { confirm: 'Are you sure?' } if is_current_user?(post.user) %>
     </li>
   <% end %>
