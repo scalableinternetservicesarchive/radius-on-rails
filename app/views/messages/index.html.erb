@@ -1,11 +1,11 @@
 <h2>Chat with <%= @recipient.name %></h2>
 <%= link_to "View #{@recipient.name}'s Profile", @recipient %>
 <br><br>
-<% if @over_ten %>
-   <%= link_to 'Load More Messages', '?m=all' %>
-<% end %>
 
-<div>
+<div id="messages">
+  <% if @over_ten %>
+   <%= link_to 'Load More Messages', '?m=all' %><br><br>
+  <% end %>
   <% unless @is_blank %>
     <% @messages.each do |message| %>
       <% if message.body %>
@@ -38,3 +38,10 @@
   </div>
 <% end %>
 <%= link_to 'Back', conversations_path %>
+
+<!-- Scroll -->
+<%= javascript_tag do %>
+  var objDiv = document.getElementById("messages");
+  objDiv.scrollTop = objDiv.scrollHeight;
+<% end %>
+<!-- Scroll -->
