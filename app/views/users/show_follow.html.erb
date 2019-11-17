@@ -1,13 +1,11 @@
 <% provide(:title, @title) %>
-<div class="row">
-  <aside class="col-md-4">
-    <section class="user_info">
-        <h1><%= @user.name %></h1>
-        <span><b>Posts:</b> <%= @user.posts.count %></span>
-    </section>
+<div class="row profile-options">
+  <div class="col-md-4 col-sm-12">
+    <h1><%= @user.name %></h1>
+    <h3><b>Posts:</b> <%= @user.posts.count %></h3>
     <%= render 'shared/stats' %>
-  </aside>
-  <div class="col-md-8">
+  </div>
+  <div class="col-md-8 col-sm-12">
     <% if @users.any? %>
       <h3><%= @title %></h3>
       <%= render 'users/shared/table', users: @users %>
@@ -15,5 +13,7 @@
       <p>No <%= @title %>.</p>
     <% end %>
   </div>
+  <div class="col-md-12 text-center">
+    <%= link_to 'Back', @user, class: 'btn btn-secondary' %>
+  </div>
 </div>
-<%= link_to 'Back', @user %>

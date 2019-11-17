@@ -14,36 +14,36 @@
 @import "users";
 
 * {
-    font-family: 'Ubuntu', sans-serif;
+  font-family: 'Ubuntu', sans-serif;
 }
 
 h1 {
-    font-family: 'Comfortaa', cursive;
-    font-size: 2em;
+  font-family: 'Comfortaa', cursive;
+  font-size: 2em;
 }
 
 a {
-    color: #91C4FF;
-}
-
-a:visited {
-    color: #6A96DF;
+  color: #91C4FF;
 }
 
 a:hover {
-    background: none;
+  background: none;
+  color: #6A96DF;
 }
 
 table {
-    font-size: 1.2em;
+  font-size: 1.2em;
+}
+
+th {
+  padding-bottom: 10px;
 }
 
 td {
-    font-size: 1em;
+  padding: 0 10px 14px;
 }
 
 span#name {
-    font-family: 'Comfortaa', cursive;
-    color: #EF9A9A;
+  font-family: 'Comfortaa', cursive;
+  color: #EF9A9A;
 }
-
