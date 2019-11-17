@@ -1,7 +1,7 @@
-<div class="row profile-options">
+<div class="row body-options">
   <div class="col-md-4 col-sm-12 text-center">
     <% if is_current_user?(@user) %>
-      <%= button_to 'Edit profile', edit_user_registration_path, :class => 'btn btn-primary custom-button' %>
+      <%= link_to 'Edit profile', edit_user_registration_path, :class => 'btn btn-primary custom-button' %>
       <%= render 'shared/stats' %>
     <% else %>
       <%= render 'follow_form' %>

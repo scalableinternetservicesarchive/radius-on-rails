@@ -47,3 +47,25 @@ span#name {
   font-family: 'Comfortaa', cursive;
   color: #EF9A9A;
 }
+
+.body-options {
+  margin-top: 20px;
+}
+
+.custom-button {
+  background-color: #91C4FF;
+  border: none !important;
+  font-size: 25px;
+  margin: 20px;
+  width: 200px;
+}
+
+.custom-button:hover {
+  background-color: #6A96DF;
+}
+
+#send-button {
+  height: 100%;
+  margin: 0px;
+  width: 100%;
+}

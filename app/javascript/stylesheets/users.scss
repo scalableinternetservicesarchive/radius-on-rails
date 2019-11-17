@@ -2,28 +2,12 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.custom-button {
-  background-color: #91C4FF;
-  border: none !important;
-  font-size: 25px;
-  margin: 20px;
-  width: 200px;
-}
-
-.custom-button:hover {
-  background-color: #6A96DF;
-}
-
-.profile-options {
-  margin-top: 20px;
-}
-
 .unfollow {
-  background-color: #CA6C75;
+  background-color: #CA6C75 !important;
 }
 
 .unfollow:hover {
-  background-color: #B7414B;
+  background-color: #B7414B !important;
 }
 
 .stats {

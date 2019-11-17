@@ -1,8 +1,8 @@
-<div class="ui segment">
-  <h3>Chats</h3>
+<div class="row body-options">
+  <div class="col-md-12">
+    <h1>Chats</h1>
 
-  <div class="ui list">
-    <div class="item">
+    <ul class="list-group">
       <% @conversations.each do |conversation| %>
         <% if conversation.sender_id == current_user.id || conversation.recipient_id == current_user.id %>
           <% if conversation.sender_id == current_user.id %>
@@ -10,15 +10,18 @@
           <% else %>
             <% recipient = User.find(conversation.sender_id) %>
           <% end %>
-          <%= link_to recipient.name, conversation_messages_path(conversation)%>
-          <% if conversation.messages.last && !conversation.messages.last.read %>
-            <% unless conversation.messages.last.user_id == current_user.id %>
-              <i>(Unread messages)</i>
-            <% end %>
+          <%= link_to conversation_messages_path(conversation) do %>
+            <li class="list-group-item">
+              <%= recipient.name %>
+              <% if conversation.messages.last && !conversation.messages.last.read %>
+                <% unless conversation.messages.last.user_id == current_user.id %>
+                  <i>(Unread messages)</i>
+                <% end %>
+              <% end %>
+            </li>
           <% end %>
-          <br>
         <% end %>
       <% end %>
-    </div>
+    </ul>
   </div>
 </div>

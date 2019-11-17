@@ -1,10 +1,14 @@
-<h2>Chat with <%= @recipient.name %></h2>
-<%= link_to "View #{@recipient.name}'s Profile", @recipient %>
-<br><br>
+<div class="row body-options">
+  <div class="col-md-12">
+    <h1>Chat with <%= @recipient.name %></h1>
+    <%= link_to "View #{@recipient.name}'s Profile", @recipient %>
+    <%= link_to 'Back', conversations_path, class: 'btn btn-secondary float-right' %>
+  </div>
+</div>
 
 <div id="messages">
   <% if @over_ten %>
-   <%= link_to 'Load More Messages', '?m=all' %><br><br>
+    <%= link_to 'Load More Messages', '?m=all' %><br><br>
   <% end %>
   <% unless @is_blank %>
     <% @messages.each do |message| %>
@@ -26,22 +30,28 @@
   <% end %>
 </div>
 
-<br>
+<div id="row">
+  <div class="col-md-12">
+    <%= form_for [@conversation, @message], html: {class: "ui reply form"} do |f| %>
+      <div class="form-row">
+        <div class="form-group col-md-10 mb-0">
+          <%= f.text_area :body, placeholder: "Type a message", class: 'form-control' %>
+        </div>
+        
+        <%= f.text_field :user_id, value: current_user.id, type: "hidden" %>
 
-<%= form_for [@conversation, @message], html: {class: "ui reply form"} do |f| %>
-  <div class="field">
-    <%= f.text_area :body, class: "form-control" %>
+        <div class="col-md-2">
+          <%= f.submit "Send", class: 'btn btn-primary custom-button', id: 'send-button' %>
+        </div>
+      </div>
+    <% end %>
   </div>
-    <%= f.text_field :user_id, value: current_user.id, type: "hidden"  %>
-  <div>
-    <%= f.submit "Send", class: "ui blue labeled submit icon button" %>
-  </div>
-<% end %>
-<%= link_to 'Back', conversations_path %>
+</div>
 
 <!-- Scroll -->
 <%= javascript_tag do %>
   var objDiv = document.getElementById("messages");
   objDiv.scrollTop = objDiv.scrollHeight;
+  // $("#messages").animate({ scrollTop: $('#messages').prop("scrollHeight")}, 1000);
 <% end %>
 <!-- Scroll -->
