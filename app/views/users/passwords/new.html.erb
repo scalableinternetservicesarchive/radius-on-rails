@@ -1,16 +1,22 @@
-<h2>Forgot your password?</h2>
+<div class="row body-options">
+  <div class="col-md-8 mx-auto">
+    <div class="card card-signin my-5">
+      <div class="card-body">
+        <h1 class="card-title text-center">Forgot your password?</h1>
+          <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+            <%= render "users/shared/error_messages", resource: resource %>
 
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-  <%= render "users/shared/error_messages", resource: resource %>
+            <div class="form-group">
+              <%= f.label :email %><br />
+              <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control' %>
+            </div>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+            <div class="text-center">
+              <%= f.submit "Send me reset password instructions", :class => 'btn btn-primary custom-button', style: 'width:auto' %>
+              <div><%= render "users/shared/links" %></div>
+            </div>
+          <% end %>
+      </div>
+    </div>
   </div>
-
-  <div class="actions">
-    <%= f.submit "Send me reset password instructions" %>
-  </div>
-<% end %>
-
-<%= render "users/shared/links" %>
+</div>
