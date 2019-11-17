@@ -32,7 +32,7 @@
 
 <div id="row">
   <div class="col-md-12">
-    <%= form_for [@conversation, @message], html: {class: "ui reply form"} do |f| %>
+    <%= form_for [@conversation, @message], remote: true, html: {class: "reply-form"} do |f| %>
       <div class="form-row">
         <div class="form-group col-md-10 mb-0">
           <%= f.text_area :body, placeholder: "Type a message", class: 'form-control' %>
@@ -50,8 +50,13 @@
 
 <!-- Scroll -->
 <%= javascript_tag do %>
+  window.onload=function () {
+    var objDiv = document.getElementById("messages");
+    objDiv.scrollTop = objDiv.scrollHeight;
+  }
   var objDiv = document.getElementById("messages");
   objDiv.scrollTop = objDiv.scrollHeight;
+  //$("#messages").scrollTop($("#messages")[0].scrollHeight);
   // $("#messages").animate({ scrollTop: $('#messages').prop("scrollHeight")}, 1000);
 <% end %>
 <!-- Scroll -->
