@@ -30,6 +30,10 @@ a:visited {
     color: #6A96DF;
 }
 
+a:hover {
+    background: none;
+}
+
 table {
     font-size: 1.2em;
 }
@@ -43,6 +47,3 @@ span#name {
     color: #EF9A9A;
 }
 
-a:hover {
-    background: white;
-}
