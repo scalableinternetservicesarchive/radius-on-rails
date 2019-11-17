@@ -2,5 +2,47 @@
 @import "bootstrap";
 // Font Awesome
 @import '@fortawesome/fontawesome-free';
-// Application CSS stored in old files
-@import '../../assets/stylesheets/application'
+
+// Custome File imports
+@import "conversations";
+@import "likes";
+@import "messages";
+@import "posts";
+@import "relationships";
+@import "scaffolds";
+@import "static_pages";
+@import "users";
+
+* {
+    font-family: 'Ubuntu', sans-serif;
+}
+
+h1 {
+    font-family: 'Comfortaa', cursive;
+    font-size: 2em;
+}
+
+a {
+    color: #91C4FF;
+}
+
+a:visited {
+    color: #6A96DF;
+}
+
+table {
+    font-size: 1.2em;
+}
+
+td {
+    font-size: 1em;
+}
+
+span#name {
+    font-family: 'Comfortaa', cursive;
+    color: #EF9A9A;
+}
+
+a:hover {
+    background: white;
+}
