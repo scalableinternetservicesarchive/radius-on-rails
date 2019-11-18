@@ -33,7 +33,7 @@
             <% end %>
           </li>
           <% if user_signed_in? %>
-            <li class="nav-item <%= 'active' if current_page?(profile_path) %>">
+            <li class="nav-item <%= 'active' if current_page?(current_user) %>">
               <%= link_to profile_path, :class => 'nav-link' do %>Profile
                 <%= (content_tag :span, "(current)", :class => "sr-only") if current_page?(root_path) %>
               <% end %>
@@ -43,7 +43,7 @@
                 <%= (content_tag :span, "(current)", :class => "sr-only") if current_page?(root_path) %>
               <% end %>
             </li>
-            <li class="nav-item <%= 'active' if current_page?(conversations_path) %>">
+            <li class="nav-item <%= 'active' if ['messages', 'conversations'].include?(controller_name) %>">
               <%= link_to conversations_path, :class => 'nav-link' do %>Chats
                 <%= (content_tag :span, "(current)", :class => "sr-only") if current_page?(root_path) %>
               <% end %>
@@ -69,7 +69,7 @@
       </div>
     </nav>
 
-    <div class="container">
+    <div class="<%= 'container' unless ['messages', 'conversations'].include?(controller_name) %>">
       <%= yield %>
     </div>
   </body>

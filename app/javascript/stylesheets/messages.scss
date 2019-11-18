@@ -2,10 +2,65 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-#messages {
-  border: 1px solid black;
-  height: 55vh;
-  overflow: scroll;
-  padding: 5px;
-  margin: 15px;
+.chat-people {  
+  a {
+    color: black;
+  }
+}
+
+.chat {
+  .chat-header {
+    padding: 10px;
+  }
+
+  .chat-body {
+    background-color: #E8EAEC;
+    border: 1px solid black;
+    border-radius: 5px;
+    height: 60vh;
+    overflow-y: scroll;
+    padding: 30px 30px 20px;
+
+    .message-data {
+      margin-bottom: 5px;
+    }
+    
+    .message-data-time {
+      color: lighten(gray, 8%);
+      padding-left: 6px;
+    }
+    
+    .message {      
+      color: white;
+      padding: 18px 20px;
+      line-height: 26px;
+      font-size: 16px;
+      border-radius: 7px;
+      margin-bottom: 20px;
+    }
+    
+    .my-message {
+      background: #9EC1E9;
+    }
+    
+    .other-message {
+      background: #92BA79;
+    }
+  }
+  
+  .chat-message {
+    margin: 10px 0px;
+
+    .button-margin {
+      margin: 5px 0px;
+    }
+
+    textarea {
+      border-radius: 5px;
+      margin: 5px 0px;
+      padding: 10px 20px;
+      resize: none;
+      width: 100%;
+    }
+  }
 }

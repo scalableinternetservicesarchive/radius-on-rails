@@ -1,50 +1,63 @@
-<div class="row body-options">
-  <div class="col-md-12">
-    <h1>Chat with <%= @recipient.name %></h1>
-    <%= link_to "View #{@recipient.name}'s Profile", @recipient %>
-    <%= link_to 'Back', conversations_path, class: 'btn btn-secondary float-right' %>
-  </div>
-</div>
+<div class='container-fluid'>
+  <div class="row body-options">
+    <div class="col-md-3 chat-people">
+      <h1>Chats</h1>
+      <%= render 'conversations/chats' %>
+    </div>
 
-<div id="messages">
-  <% if @over_ten %>
-    <%= link_to 'Load More Messages', '?m=all' %><br><br>
-  <% end %>
-  <% unless @is_blank %>
-    <% @messages.each do |message| %>
-      <% if message.body %>
-        <% user = User.find(message.user_id) %>
-        <div>
-          <div><strong><%= user.name %></strong> <%= message.message_time %></div>
-          <%= simple_format(message.body) %>
-        </div>
-      <% end %>
-    <% end %>
-    <% unless @messages.last.read %>
-      <% if @messages.last.user_id == current_user.id %>
-        <i>(Unread)</i>
-      <% end %>
-    <% end %>
-  <% else %>
-    <p>Send your first message to <%= @recipient.name %></p>
-  <% end %>
-</div>
-
-<div id="row">
-  <div class="col-md-12">
-    <%= form_for [@conversation, @message], remote: true, html: {class: "reply-form"} do |f| %>
-      <div class="form-row">
-        <div class="form-group col-md-10 mb-0">
-          <%= f.text_area :body, placeholder: "Type a message", class: 'form-control' %>
-        </div>
-        
-        <%= f.text_field :user_id, value: current_user.id, type: "hidden" %>
-
-        <div class="col-md-2">
-          <%= f.submit "Send", class: 'btn btn-primary custom-button', id: 'send-button' %>
-        </div>
+    <div class="col-md-9 chat">
+      <div class="chat-header">
+        <h2>Chat with <%= @recipient.name %></h2>
+        <%= link_to "View #{@recipient.name}'s Profile", @recipient %>
       </div>
-    <% end %>
+
+      <div id="messages" class="chat-body">
+        <% if @over_ten %>
+          <%= link_to 'Load More Messages', '?m=all' %><br><br>
+        <% end %>
+        <% unless @is_blank %>
+          <% @messages.each do |message| %>
+            <% if message.body %>
+              <% user = User.find(message.user_id) %>
+              <div class="message-data">
+                <span class="message-data-name"><%= user.name %></span>
+                <span class="message-data-time"><%= message.message_time %></span>
+              </div>
+              <% if message.user_id == current_user.id %>
+                <div class="message my-message">
+                  <%= simple_format(message.body) %>
+                </div>
+              <%else%>
+                <div class="message other-message">
+                  <%= simple_format(message.body) %>
+                </div>
+              <%end%>
+            <% end %>
+          <% end %>
+          <% unless @messages.last.read %>
+            <% if @messages.last.user_id == current_user.id %>
+              <i>(Unread)</i>
+            <% end %>
+          <% end %>
+        <% else %>
+          <p>Send your first message to <%= @recipient.name %></p>
+        <% end %>
+      </div>
+
+      <%= form_for [@conversation, @message], remote: true, html: {class: "chat-message"} do |f| %>
+        <div class="form-row">
+          <div class="form-group col-md-10 mb-0">
+            <%= f.text_area :body, placeholder: "Type a message", class: 'form-control' %>
+          </div>
+          
+          <%= f.text_field :user_id, value: current_user.id, type: "hidden" %>
+
+          <div class="col-md-2 button-margin">
+            <%= f.submit "Send", class: 'btn btn-primary custom-button', id: 'send-button' %>
+          </div>
+        </div>
+      <% end %>
+    </div>
   </div>
 </div>
 

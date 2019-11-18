@@ -1,27 +1,18 @@
-<div class="row body-options">
-  <div class="col-md-12">
-    <h1>Chats</h1>
+<div class="container-fluid">
+  <div class="row body-options">
+    <% if @conversations.blank? %>
+      <h1>No chats started yet.</h1>
+    <% else %>
+      <div class="col-md-3 chat-people">
+        <h1>Chats</h1>
+        <%= render 'conversations/chats' %>
+      </div>
 
-    <ul class="list-group">
-      <% @conversations.each do |conversation| %>
-        <% if conversation.sender_id == current_user.id || conversation.recipient_id == current_user.id %>
-          <% if conversation.sender_id == current_user.id %>
-            <% recipient = User.find(conversation.recipient_id) %>
-          <% else %>
-            <% recipient = User.find(conversation.sender_id) %>
-          <% end %>
-          <%= link_to conversation_messages_path(conversation) do %>
-            <li class="list-group-item">
-              <%= recipient.name %>
-              <% if conversation.messages.last && !conversation.messages.last.read %>
-                <% unless conversation.messages.last.user_id == current_user.id %>
-                  <i>(Unread messages)</i>
-                <% end %>
-              <% end %>
-            </li>
-          <% end %>
-        <% end %>
-      <% end %>
-    </ul>
+      <div class="col-md-9 chat">
+        <div class="chat-header">
+          <h2>Open a chat.</h2>
+        </div>
+      </div>
+    <% end %>
   </div>
 </div>
