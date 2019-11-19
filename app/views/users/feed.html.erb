@@ -10,8 +10,8 @@
 
     <ul class="list-group">
       <% @posts.each do |post| %>
-        <li id="post-<%= post.id %>" class="list-group-item">
-        <span class="content"><%= simple_format(post.content) %></span>
+        <li id="post-<%= post.id %>" class="list-group-item" >
+        <span class="content"><%= simple_format(post.content, style: "font-family: 'Arial', sans-serif;") %></span>
         <span class="timestamp">
           (Posted by <%= link_to post.user.name, post.user %> <%= time_ago_in_words(post.created_at) %> ago.)
         </span>
