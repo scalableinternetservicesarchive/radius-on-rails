@@ -17,6 +17,13 @@
   font-family: 'Ubuntu', sans-serif;
 }
 
+body {
+  background-image: linear-gradient(white 60%, #91c4ff 100%);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  backface-visibility: hidden;
+}
+
 h1 {
   font-family: 'Comfortaa', cursive;
   font-size: 2em;
