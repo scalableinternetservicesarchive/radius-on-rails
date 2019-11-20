@@ -1,19 +1,13 @@
+<%= render "users/shared/profile_header" %>
+
 <% provide(:title, @title) %>
 <div class="row body-options">
-  <div class="col-md-4 col-sm-12">
-    <h1><%= @user.name %></h1>
-    <h3><b>Posts:</b> <%= @user.posts.count %></h3>
-    <%= render 'shared/stats' %>
-  </div>
-  <div class="col-md-8 col-sm-12">
+  <div class="col-12">
     <% if @users.any? %>
       <h3><%= @title %></h3>
       <%= render 'users/shared/table', users: @users %>
     <% else %>
       <p>No <%= @title %>.</p>
     <% end %>
-  </div>
-  <div class="col-md-12 text-center">
-    <%= link_to 'Back', @user, class: 'btn btn-secondary' %>
   </div>
 </div>

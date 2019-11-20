@@ -1,39 +1,10 @@
-<div class="row body-options">
-  <div class="col-md-4 col-sm-12 text-center">
-    <% if is_current_user?(@user) %>
-      <%= link_to 'Edit profile', edit_user_registration_path, :class => 'btn btn-primary custom-button' %>
-      <%= render 'shared/stats' %>
-    <% else %>
-      <%= render 'follow_form' %>
-      <%= button_to "Message #{@user.name}", 
-          conversations_path(sender_id: current_user.id, recipient_id: @user.id), 
-          method: 'post', class: 'btn btn-primary custom-button' %>
-    <% end %>
-  </div>
+<%= render "users/shared/profile_header" %>
 
-  <div class="col-md-8 col-sm-12">
-    <h1>
-      <table align="center">
-        <tr>
-          <td><strong>Name:</strong></td>
-          <td><%= @user.name %></td>
-        </tr>
-        <tr>
-          <td><strong>Bio:</strong></td>
-          <td><%= @user.bio %></td>
-        </tr>
-        <tr>
-          <td><strong>Lat:</strong></td>
-          <td><%= @user.lat %></td>
-        </tr>
-        <tr>
-          <td><strong>Lng:</strong></td>
-          <td><%= @user.lng %></td>
-        </tr>
-      </table>
-    </h1>
+<div class="row body-options">
+  <div class="col-12 profile-body">
+    <p><strong>Bio: </strong></p>
+    <p><%= @user.bio %></p>
+    <p><strong>Lat: </strong><%= @user.lat %></p>
+    <p><strong>Lng: </strong><%= @user.lng %></p>
   </div>
-  <div class="col-md-12 text-center">
-    <%= link_to 'Back', root_url, class: 'btn btn-secondary' %>
-  </div>
-<div>
+</div>

@@ -1,0 +1,40 @@
+<div class="row body-options">
+  <div class="col-12 profile-header">
+    <div class="user-gravatar"><%= link_to gravatar_for(@user, 80), gravatar_profile_for(@user), target: :_blank %></div>
+    <div class="user-name"><h1><%= @user.name %></h1></div>
+    <div class="row user-buttons">
+      <% if is_current_user?(@user) %>
+        <% if current_page?(current_user) %>
+          <%= link_to 'Edit Profile', edit_user_registration_path, :class => 'btn btn-primary custom-button' %>
+        <% else %>
+          <%= link_to 'Back', @user, class: 'btn btn-secondary custom-button' %>
+        <% end %>
+      <% else %>
+        <%= render 'follow_form' %>
+        <%= button_to "Message #{@user.name}", 
+            conversations_path(sender_id: current_user.id, recipient_id: @user.id), 
+            method: 'post', class: 'btn btn-primary custom-button' %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<div class="row body-options">
+  <div class="col-12 profile-stats">
+    <% if is_current_user?(@user) %>
+      <a href="<%= following_user_path(@user) %>">
+        <strong><%= @user.following.count %></strong> following
+      </a>
+      <a href="<%= followers_user_path(@user) %>">
+        <strong><%= @user.followers.count %></strong> followers
+      </a>
+    <% else %>
+      <a href="javascript:void(0);">
+        <strong><%= @user.following.count %></strong> following
+      </a>
+      <a href="javascript:void(0);">
+        <strong><%= @user.followers.count %></strong> followers
+      </a>
+    <% end %>
+  </div>
+</div>

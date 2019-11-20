@@ -25,11 +25,11 @@
               </div>
               <% if message.user_id == current_user.id %>
                 <div class="message my-message">
-                  <%= simple_format(message.body) %>
+                  <%= simple_format(message.body, style: "font-family: 'Arial', sans-serif;") %>
                 </div>
               <%else%>
                 <div class="message other-message">
-                  <%= simple_format(message.body) %>
+                  <%= simple_format(message.body, style: "font-family: 'Arial', sans-serif;") %>
                 </div>
               <%end%>
             <% end %>

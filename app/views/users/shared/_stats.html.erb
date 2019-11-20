@@ -1,0 +1,19 @@
+<div class="row body-options">
+  <div class="col-12 profile-stats">
+    <% if is_current_user?(@user) %>
+      <a href="<%= following_user_path(@user) %>">
+        <strong><%= @user.following.count %></strong> following
+      </a>
+      <a href="<%= followers_user_path(@user) %>">
+        <strong><%= @user.followers.count %></strong> followers
+      </a>
+    <% else %>
+      <a href="javascript:void(0);">
+        <strong><%= @user.following.count %></strong> following
+      </a>
+      <a href="javascript:void(0);">
+        <strong><%= @user.followers.count %></strong> followers
+      </a>
+    <% end %>
+  </div>
+</div>

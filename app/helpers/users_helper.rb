@@ -6,4 +6,16 @@ module UsersHelper
   def is_valid_coord?(coord)
     !coord.nil? && !coord.empty?
   end
+
+  # Returns the Gravatar for the given user.
+  def gravatar_profile_for(user)
+    gravatar_id = Digest::MD5::hexdigest(user.email.downcase)
+    "https://www.gravatar.com/#{gravatar_id}"
+  end
+
+  def gravatar_for(user, size=80)
+    gravatar_id = Digest::MD5::hexdigest(user.email.downcase)
+    gravatar_url = "https://www.gravatar.com/avatar/#{gravatar_id}?s=#{size}&d=mp" # another option: "d=wavatar"
+    image_tag(gravatar_url, alt: user.name, class: "gravatar")
+  end
 end
