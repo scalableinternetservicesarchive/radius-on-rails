@@ -18,10 +18,13 @@
   </div>
 </div>
 
-<h1>Hi <span id='name'><%= current_user.name %></span>!
-<% if @users.any? %>
-  These people are nearby:</h1>
-  <%= render 'users/shared/table', users: @users %>
-<% else %>
-  <p>No one is currently nearby.</p>
-<% end %>
+<div class="row body-options">
+  <div class="col-12">
+    <h1>Hi <span id='name'><%= current_user.name %></span>! <%= 'These people are nearby:' if @users.any? %></h1>
+    <% if @users.any? %>
+      <%= render 'users/shared/table', users: @users %>
+    <% else %>
+      <p>No one is currently nearby.</p>
+    <% end %>
+  </div>
+</div>

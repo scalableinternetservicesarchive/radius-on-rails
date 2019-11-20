@@ -1,24 +1,19 @@
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Bio</th>
-      <th>Lat</th>
-      <th>Lng</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% users.each do |user| %>
-      <tr>
-        <td><%= user.name %></td>
-        <td><%= user.bio %></td>
-        <td><%= user.lat %></td>
-        <td><%= user.lng %></td>
-        <td><%= link_to 'View Profile', user %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<div class="people-cards">
+  <% users.each do |user| %>
+    <div class="col-md-3">
+      <%= link_to user do %>
+        <div class="card people-card">
+          <div class="card-img-top"><%= gravatar_for(user, 240) %></div>
+          <div class="card-body">
+            <h5 class="card-title"><%= user.name %></h5>
+            <p class="card-text"><%= user.bio.truncate(36, separator: ' ') %></p>
+            <!-- <% if user.lat && user.lng %>
+              <p class="card-text"><small class="text-muted"><%= "#{user.lat} | #{user.lng}" %></small></p>
+            <% end %> -->
+          </div>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+</div>
 <%# <%= will_paginate  %>
