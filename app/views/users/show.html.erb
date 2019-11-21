@@ -2,9 +2,7 @@
 
 <div class="row body-options">
   <div class="col-12 profile-body">
-    <p><strong>Bio: </strong></p>
     <p><%= @user.bio %></p>
-    <p><strong>Lat: </strong><%= @user.lat %></p>
-    <p><strong>Lng: </strong><%= @user.lng %></p>
+    <p id="user-location">(<%= @user.lat %>, <%= @user.lng %>)</p>
   </div>
 </div>

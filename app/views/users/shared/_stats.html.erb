@@ -2,17 +2,17 @@
   <div class="col-12 profile-stats">
     <% if is_current_user?(@user) %>
       <a href="<%= following_user_path(@user) %>">
-        <strong><%= @user.following.count %></strong> following
+        <strong><%= @user.following.count %> following</strong>
       </a>
       <a href="<%= followers_user_path(@user) %>">
-        <strong><%= @user.followers.count %></strong> followers
+        <strong><%= @user.followers.count %> followers</strong>
       </a>
     <% else %>
       <a href="javascript:void(0);">
-        <strong><%= @user.following.count %></strong> following
+        <strong><%= @user.following.count %> following</strong>
       </a>
       <a href="javascript:void(0);">
-        <strong><%= @user.followers.count %></strong> followers
+        <strong><%= @user.followers.count %> followers</strong>
       </a>
     <% end %>
   </div>

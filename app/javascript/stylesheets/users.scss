@@ -19,6 +19,10 @@
   }
   
   .user-name {
+    font-family: "Comfortaa", cursive;
+    font-weight: bold;
+    font-size: 2.5em;
+    color: #91C4FF;
     align-self: flex-end;
     order: 2;
     padding: 20px 20px 0px;
@@ -49,15 +53,19 @@
 
 .profile-stats {
   a {
-    color: black;
-    font-size: 24px;
+    color: #424242;
+    font-size: 1.25em;
     padding-right: 20px;
   }
 }
 
 .profile-body {
   p {
-    font-size: 24px;
+    font-size: 1.25em;
+  }
+
+  p#user-location {
+    color: #959595;
   }
 }
 
@@ -71,8 +79,14 @@
   .people-card {
     margin: 10px;
     
-    h5, p {
-      color: black;
+    h4 {
+      font-family: 'Comfortaa', cursive;
+      font-weight: bold;
+      color: #91C4FF;
+    }
+
+    p {
+      color: #959595;
     }
     
     img {
