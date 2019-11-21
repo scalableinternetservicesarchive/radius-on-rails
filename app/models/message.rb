@@ -1,6 +1,6 @@
 class Message < ApplicationRecord
     belongs_to :conversation
-    
+    default_scope -> { order(created_at: :asc) }
     validates_presence_of :body, :conversation_id, :user_id
 
     def message_time

@@ -13,8 +13,6 @@ class UsersController < ApplicationController
   def show
     redirect_to user_path(current_user.id) unless params[:id]
     @user = User.find(params[:id]) if params[:id]
-    # user = User.find(params[:id])
-    # @nearby_users = User.within(700, :origin => [user.lat,user.lng]).where.not(id: user.id)
   end
 
   # PATCH/PUT /users/1/update_location
@@ -29,11 +27,11 @@ class UsersController < ApplicationController
           format.html { redirect_to root_path, notice: 'Location was successfully updated.' }
           format.json { render :show, status: :ok, location: root_path }
         else
-          format.html { redirect_to root_path, notice: 'Location could not be updated.' }
+          format.html { redirect_to root_path, alert: 'Location could not be updated.' }
           format.json { render json: current_user.errors, status: :unprocessable_entity }
         end
       else
-        format.html { redirect_to root_path, notice: 'Sorry, your browser does not support HTML5 geolocation.' }
+        format.html { redirect_to root_path, alert: 'Sorry, your browser does not support HTML5 geolocation.' }
         format.json { render json: current_user.errors, status: :unprocessable_entity }
       end
     end

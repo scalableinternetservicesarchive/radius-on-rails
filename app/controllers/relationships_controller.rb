@@ -14,7 +14,7 @@ class RelationshipsController < ApplicationController
         user = Relationship.find(params[:id]).followed
         current_user.unfollow(user)
         respond_to do |format|
-            format.html { redirect_to user, notice: 'User was successfully unfollowed.' }
+            format.html { redirect_to user, alert: 'User was unfollowed.' }
             format.json
         end
     end
