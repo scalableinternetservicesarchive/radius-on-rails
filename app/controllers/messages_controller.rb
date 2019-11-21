@@ -8,10 +8,10 @@ class MessagesController < ApplicationController
       redirect_to conversations_path
     else
       @messages = @conversation.messages
-      if @messages.length > 10
-        @over_ten = true
-        @messages = @messages[-10..-1]
-      end
+      # if @messages.length > 10
+      #   @over_ten = true
+      #   @messages = @messages[-10..-1]
+      # end
       if params[:m]
         @over_ten = false
         @messages = @conversation.messages
