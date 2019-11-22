@@ -37,35 +37,72 @@
 
 # Load testing
 # Create users
-4000.times do |n|
+values = ""
+100000.times { |n| 
   name  = "seed-#{n+1}"
-  bio = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
   email = "#{name}@radius.com"
+  bio = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
   password = "radius"
-  User.create!( name:                   name,
-                email:                  email,
-                bio:                    bio,
-                password:               password,
-                lat:                    34.067142,
-                lng:                    -118.451346)
-end
+  lat = "34.067142"
+  lng = "-118.451346"
+  values.concat("('#{name}','#{email}','#{bio}','#{password}',#{lat},#{lng},'#{Time.now}','#{Time.now}'),")
+}
+values = values[0...-1]
+ActiveRecord::Base.connection.execute("INSERT INTO users (name, email, bio, encrypted_password, lat, lng, created_at, updated_at) VALUES #{values}")
 
 # Create posts
-users = User.first(5)
-1000.times do
-  users.each { |user| user.posts.create!(content: user.bio) }
-end
+users = User.first(1000)
+values = (users.map { |u| "('#{u.bio}',#{u.id},'#{Time.now}','#{Time.now}')" } * 500).join(",")
+ActiveRecord::Base.connection.execute("INSERT INTO posts (content, user_id, created_at, updated_at) VALUES #{values}")
 
 # Following people
 users = User.all
 user  = users.first
-following = users[2..10]
-followers = users[3..1000]
-following.each { |followed| 
-  user.follow(followed)
-  convo = Conversation.create!(sender_id: user.id, recipient_id: followed.id)
-  500.times do
-    convo.messages.create!(body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit", user_id: user.id)
-  end
-}
-followers.each { |follower| follower.follow(user) }
+following = users[2..1000]
+followers = users[3..90000]
+
+values = following.map { |u| "(#{user.id},#{u.id},'#{Time.now}','#{Time.now}')"  }.join(",")
+ActiveRecord::Base.connection.execute("INSERT INTO relationships (follower_id, followed_id, created_at, updated_at) VALUES #{values}")
+
+values = following.map { |u| "(#{user.id},#{u.id},'#{Time.now}','#{Time.now}')"  }.join(",")
+ActiveRecord::Base.connection.execute("INSERT INTO conversations (sender_id, recipient_id, created_at, updated_at) VALUES #{values}")
+
+body = "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+values = Conversation.all.map { |u| "('#{body}',#{u.id},#{user.id},'#{Time.now}','#{Time.now}')"  }.join(",")
+values = Array.new(500, values).join(",")
+ActiveRecord::Base.connection.execute("INSERT INTO messages (body, conversation_id, user_id, created_at, updated_at) VALUES #{values}")
+
+values = followers.map { |u| "(#{u.id},#{user.id},'#{Time.now}','#{Time.now}')"  }.join(",")
+ActiveRecord::Base.connection.execute("INSERT INTO relationships (follower_id, followed_id, created_at, updated_at) VALUES #{values}")
+
+# OLD:
+# 4000.times do |n|
+#   name  = "seed-#{n+1}"
+#   bio = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+#   email = "#{name}@radius.com"
+#   password = "radius"
+#   User.create!( name:                   name,
+#                 email:                  email,
+#                 bio:                    bio,
+#                 password:               password,
+#                 lat:                    34.067142,
+#                 lng:                    -118.451346)
+# end
+
+# users = User.first(5)
+# 1000.times do
+#   users.each { |user| user.posts.create!(content: user.bio) }
+# end
+
+# users = User.all
+# user  = users.first
+# following = users[2..10]
+# followers = users[3..1000]
+# following.each { |followed| 
+#   user.follow(followed)
+#   convo = Conversation.create!(sender_id: user.id, recipient_id: followed.id)
+#   500.times do
+#     convo.messages.create!(body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit", user_id: user.id)
+#   end
+# }
+# followers.each { |follower| follower.follow(user) }
