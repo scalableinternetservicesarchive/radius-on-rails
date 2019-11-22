@@ -37,7 +37,7 @@
 
 # Load testing
 # Create users
-90000.times do |n|
+4000.times do |n|
   name  = "seed-#{n+1}"
   bio = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
   email = "#{name}@radius.com"
@@ -51,16 +51,16 @@
 end
 
 # Create posts
-users = User.first(10)
-10000.times do
+users = User.first(5)
+1000.times do
   users.each { |user| user.posts.create!(content: user.bio) }
 end
 
 # Following people
 users = User.all
 user  = users.first
-following = users[2..1000]
-followers = users[3..90000]
+following = users[2..10]
+followers = users[3..1000]
 following.each { |followed| 
   user.follow(followed)
   convo = Conversation.create!(sender_id: user.id, recipient_id: followed.id)
