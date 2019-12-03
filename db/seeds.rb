@@ -38,7 +38,7 @@
 # Load testing
 # Create users
 values = ""
-100000.times { |n| 
+1000.times { |n| 
   name  = "seed-#{n+1}"
   email = "#{name}@radius.com"
   bio = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
@@ -51,21 +51,21 @@ values = values[0...-1]
 ActiveRecord::Base.connection.execute("INSERT INTO users (name, email, bio, encrypted_password, lat, lng, created_at, updated_at) VALUES #{values}")
 
 # Create posts
-values = (User.first(100).map { |u| "('#{u.bio}',#{u.id},'#{Time.now}','#{Time.now}')" } * 500).join(",")
+values = (User.first(10).map { |u| "('#{u.bio}',#{u.id},'#{Time.now}','#{Time.now}')" } * 500).join(",")
 ActiveRecord::Base.connection.execute("INSERT INTO posts (content, user_id, created_at, updated_at) VALUES #{values}")
 
 # Following people
 user = User.first
 
-values = User.first(100).map { |u| "(#{user.id},#{u.id},'#{Time.now}','#{Time.now}')"  }.join(",")
+values = User.first(10).map { |u| "(#{user.id},#{u.id},'#{Time.now}','#{Time.now}')"  }.join(",")
 ActiveRecord::Base.connection.execute("INSERT INTO relationships (follower_id, followed_id, created_at, updated_at) VALUES #{values}")
 ActiveRecord::Base.connection.execute("INSERT INTO conversations (sender_id, recipient_id, created_at, updated_at) VALUES #{values}")
 
 body = "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
 values = Conversation.all.map { |u| "('#{body}',#{u.id},#{user.id},'#{Time.now}','#{Time.now}')"  }.join(",")
-5000.times do |n|
+500.times do |n|
   ActiveRecord::Base.connection.execute("INSERT INTO messages (body, conversation_id, user_id, created_at, updated_at) VALUES #{values}")
 end
 
-values = User.last(90000).map { |u| "(#{u.id},#{user.id},'#{Time.now}','#{Time.now}')"  }.join(",")
+values = User.last(900).map { |u| "(#{u.id},#{user.id},'#{Time.now}','#{Time.now}')"  }.join(",")
 ActiveRecord::Base.connection.execute("INSERT INTO relationships (follower_id, followed_id, created_at, updated_at) VALUES #{values}")
