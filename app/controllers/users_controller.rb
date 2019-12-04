@@ -31,8 +31,21 @@ class UsersController < ApplicationController
           format.json { render json: current_user.errors, status: :unprocessable_entity }
         end
       else
-        format.html { redirect_to root_path, alert: 'Sorry, your browser does not support HTML5 geolocation.' }
-        format.json { render json: current_user.errors, status: :unprocessable_entity }
+        if params[:lat_lng] # Allow hacky post request
+          lat, lng = params[:lat_lng].split("|")
+
+          if helpers.is_valid_coord?(lat) && helpers.is_valid_coord?(lng)
+            current_user.update(:lat => lat.to_f, :lng => lng.to_f)
+            format.html { redirect_to root_path, notice: 'Location was successfully updated.' }
+            format.json { render :show, status: :ok, location: root_path }
+          else
+            format.html { redirect_to root_path, alert: 'Location could not be updated.' }
+            format.json { render json: current_user.errors, status: :unprocessable_entity }
+          end
+        else
+          format.html { redirect_to root_path, alert: 'Sorry, your browser does not support HTML5 geolocation.' }
+          format.json { render json: current_user.errors, status: :unprocessable_entity }
+        end
       end
     end
   end
