@@ -52,7 +52,7 @@ class UsersController < ApplicationController
 
   # GET /feed
   def feed
-    @posts = current_user.feed
+    @posts = current_user.feed.includes(:user, :likes)
     @post = Post.new
   end
 

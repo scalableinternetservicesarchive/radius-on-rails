@@ -23,7 +23,7 @@
             <% else %>
               <%= link_to image_tag('heart-unliked.png'), post_likes_path(post), method: :post, style: 'height:8px;width:8px', remote: true %>
             <% end %>
-            <%= post.likes.count %>
+            <%= post.likes.size %>
           </p>
         </div>
         <%= link_to 'Delete', post, method: :delete, data: { confirm: 'Are you sure?' } if is_current_user?(post.user) %>
