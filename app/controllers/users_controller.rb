@@ -5,7 +5,7 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-    @users = User.within(700, :origin => [current_user.lat,current_user.lng]).where.not(id: current_user.id).page(params[:page])
+    @users = User.within(700, :origin => [current_user.lat,current_user.lng]).where.not(id: current_user.id).page(params[:page]) if stale?([User.all])
   end
 
   # GET /users/1
