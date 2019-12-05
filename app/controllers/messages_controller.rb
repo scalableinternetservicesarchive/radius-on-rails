@@ -2,16 +2,17 @@ class MessagesController < ApplicationController
   before_action :authenticate_user!, :set_conversation
 
   def index
-    # @conversations = Conversation.all
+    @page = params[:page]
     @conversations = Conversation.where(sender_id: current_user.id).or(Conversation.where(recipient_id: current_user.id))
     unless @conversations.include?(@conversation)
       redirect_to conversations_path
     else
+      @conversations = @conversations.page(@page)
       @messages = @conversation.messages
-      # if @messages.length > 10
-      #   @over_ten = true
-      #   @messages = @messages[-10..-1]
-      # end
+      if @messages.length > 10
+        @over_ten = true
+        @messages = @messages[-10..-1]
+      end
       if params[:m]
         @over_ten = false
         @messages = @conversation.messages

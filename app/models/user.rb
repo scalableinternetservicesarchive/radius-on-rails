@@ -19,6 +19,8 @@ class User < ApplicationRecord
     has_many :followers, through: :passive_relationships, source: :follower
     has_many :likes, dependent: :destroy
 
+    paginates_per 40
+
     # Get user feed
     def feed
         following_ids = "SELECT followed_id FROM relationships WHERE follower_id = :user_id"

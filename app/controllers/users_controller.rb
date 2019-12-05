@@ -5,7 +5,7 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-    @users = User.within(700, :origin => [current_user.lat,current_user.lng]).where.not(id: current_user.id)
+    @users = User.within(700, :origin => [current_user.lat,current_user.lng]).where.not(id: current_user.id).page(params[:page])
   end
 
   # GET /users/1
@@ -52,7 +52,7 @@ class UsersController < ApplicationController
 
   # GET /feed
   def feed
-    @posts = current_user.feed.includes(:user, :likes)
+    @posts = current_user.feed.page(params[:page]).includes(:user, :likes)
     @post = Post.new
   end
 
@@ -61,7 +61,7 @@ class UsersController < ApplicationController
     if Float(params[:id]) == current_user.id
       @title = "Following"
       @user  = current_user
-      @users = @user.following
+      @users = @user.following.page(params[:page])
       render 'show_follow'
     else
       redirect_to following_user_path(current_user.id)
@@ -73,7 +73,7 @@ class UsersController < ApplicationController
     if Float(params[:id]) == current_user.id
       @title = "Followers"
       @user  = current_user
-      @users = @user.followers
+      @users = @user.followers.page(params[:page])
       render 'show_follow'
     else
       redirect_to followers_user_path(current_user.id)

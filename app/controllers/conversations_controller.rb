@@ -2,7 +2,8 @@ class ConversationsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @conversations = Conversation.where(sender_id: current_user.id).or(Conversation.where(recipient_id: current_user.id))
+    @page = params[:page]
+    @conversations = Conversation.where(sender_id: current_user.id).or(Conversation.where(recipient_id: current_user.id)).page(@page)
   end
 
   def create

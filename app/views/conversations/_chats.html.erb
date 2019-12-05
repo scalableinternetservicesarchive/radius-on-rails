@@ -7,7 +7,7 @@
         <% else %>
           <% recipient = User.find(conversation.sender_id) %>
         <% end %>
-        <%= link_to conversation_messages_path(conversation) do %>
+        <%= link_to conversation_messages_path(conversation, page: @page) do %>
           <li class="list-group-item">
             <%= recipient.name %>
             <% if conversation.messages.last && !conversation.messages.last.read %>
@@ -19,6 +19,7 @@
         <% end %>
       <% end %>
     <% end %>
+    <%= paginate @conversations, window: 1 %>
   <% else %>
     There are no chats.
   <% end %>
