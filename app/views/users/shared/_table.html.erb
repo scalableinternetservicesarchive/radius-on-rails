@@ -1,5 +1,6 @@
 <div class="people-cards">
   <% users.each do |user| %>
+  <% cache(cache_key_for_user(user)) do %>
     <div class="col-md-3">
       <%= link_to user do %>
         <div class="card people-card">
@@ -14,6 +15,7 @@
         </div>
       <% end %>
     </div>
+    <% end %>
   <% end %>
 </div>
 <%# <%= will_paginate  %>

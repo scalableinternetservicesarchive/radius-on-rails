@@ -18,4 +18,9 @@ module UsersHelper
     gravatar_url = "https://www.gravatar.com/avatar/#{gravatar_id}?s=#{size}&d=mp" # another option: "d=wavatar"
     image_tag(gravatar_url, alt: user.name, class: "gravatar")
   end
+  
+  # Generates a cache key
+  def cache_key_for_user(user)
+      "user-#{user.name}-#{user.created_at}-#{user.bio}"
+  end
 end

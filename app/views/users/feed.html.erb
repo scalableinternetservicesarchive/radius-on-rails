@@ -10,6 +10,7 @@
 
     <ul class="list-group">
       <% @posts.each do |post| %>
+      <% cache(cache_key_for_post(post)) do %>
         <li id="post-<%= post.id %>" class="list-group-item" >
         <span class="content"><%= simple_format(post.content, style: "font-family: 'Arial', sans-serif;") %></span>
         <span class="timestamp">
@@ -28,6 +29,7 @@
         </div>
         <%= link_to 'Delete', post, method: :delete, data: { confirm: 'Are you sure?' } if is_current_user?(post.user) %>
         </li>
+	<% end %>
       <% end %>
     </ul>
   </div>
