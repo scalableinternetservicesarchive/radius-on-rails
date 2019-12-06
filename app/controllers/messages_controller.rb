@@ -3,34 +3,32 @@ class MessagesController < ApplicationController
 
   def index
     @page = params[:page]
-    @conversations = Conversation.where(sender_id: current_user.id).or(Conversation.where(recipient_id: current_user.id))
+    @conversations = Conversation.own(current_user.id)
     unless @conversations.include?(@conversation)
       redirect_to conversations_path
     else
-      @conversations = @conversations.page(@page)
+      fresh_when(@conversations)
       @messages = @conversation.messages
-      if stale?([@conversations, @messages])
-        if @messages.length > 10
-          @over_ten = true
-          @messages = @messages[-10..-1]
+      if @messages.length > 10
+        @over_ten = true
+        @messages = @messages[-10..-1]
+      end
+      if params[:m]
+        @over_ten = false
+        @messages = @conversation.messages
+      end
+      if @messages.last
+        if @messages.last.user_id != current_user.id
+          @messages.last.read = true
+          @messages.last.save
         end
-        if params[:m]
-          @over_ten = false
-          @messages = @conversation.messages
-        end
-        if @messages.last
-          if @messages.last.user_id != current_user.id
-            @messages.last.read = true
-            @messages.last.save
-          end
-        end
-        @is_blank = @messages.blank?
-        @message = @conversation.messages.new
-        if @conversation.sender_id == current_user.id
-          @recipient = User.find(@conversation.recipient_id)
-        else
-          @recipient = User.find(@conversation.sender_id)
-        end
+      end
+      @is_blank = @messages.blank?
+      @message = @conversation.messages.new
+      if @conversation.sender_id == current_user.id
+        @recipient = User.find(@conversation.recipient_id)
+      else
+        @recipient = User.find(@conversation.sender_id)
       end
     end
   end

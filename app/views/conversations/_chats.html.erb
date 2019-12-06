@@ -1,4 +1,4 @@
-<ul class="list-group">
+<ul class="list-group" style="border: 1px solid black; height: 80vh; overflow-y: scroll;" >
   <% if @conversations.present? %>
     <% @conversations.each do |conversation| %>
       <% if conversation.sender_id == current_user.id || conversation.recipient_id == current_user.id %>
@@ -19,7 +19,6 @@
         <% end %>
       <% end %>
     <% end %>
-    <%= paginate @conversations, window: 1 %>
   <% else %>
     There are no chats.
   <% end %>

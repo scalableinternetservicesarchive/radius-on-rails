@@ -3,7 +3,7 @@ class ConversationsController < ApplicationController
 
   def index
     @page = params[:page]
-    @conversations = Conversation.where(sender_id: current_user.id).or(Conversation.where(recipient_id: current_user.id)).page(@page) if stale?([Conversation.all])
+    @conversations = Conversation.own(current_user.id) if stale?(Conversation.all, :last_modified => Conversation.first.updated_at)
   end
 
   def create
